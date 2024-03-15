@@ -1,0 +1,28 @@
+apiVersion: config.nri/v1alpha1
+kind: BalloonsPolicy
+metadata:
+  name: default
+spec:
+  allocatorTopologyBalancing: true
+  balloonTypes:
+  - name: ai
+    minCPUs: 4
+    maxCPUs: 4
+    preferNewBalloons: true
+    preferSpreadOnPhysicalCores: false
+    namespaces:
+      - "*"
+  idleCPUClass: normal
+  instrumentation:
+    httpEndpoint: :8891
+    prometheusExport: true
+  log:
+    klog:
+      skip_headers: true
+    source: true
+  pinCPU: true
+  pinMemory: true
+  reservedPoolNamespaces:
+  - kube-system
+  reservedResources:
+    cpu: 750m

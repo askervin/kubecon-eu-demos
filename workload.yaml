@@ -10,3 +10,7 @@ spec:
     securityContext:
       runAsUser: 0
       runAsGroup: 0
+    imagePullPolicy: IfNotPresent
+    resources:
+      requests:
+        cpu: 1
